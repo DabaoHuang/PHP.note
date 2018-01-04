@@ -1,38 +1,32 @@
 <?php 
 
-function getRGB($image,$x,$y)
-    {
-      $rgb=imagecolorat($image, $x, $y);
-      $a=null;
-      $a['r'] = ($rgb >> 16) & 0xFF;
-      $a['g'] = ($rgb >> 8) & 0xFF;
-      $a['b'] = $rgb & 0xFF;
-      return $a;
-    }
-    function RGB_sum($array)
-    {
-      return $array['r']+$array['g']+$array['b'];
-    }    
-    function resize($source,$resize_w,$resize_h)
-    {
-        // 原始的 width, height
-        $source_w = imagesx($source);
-        $source_h = imagesy($source);
-     
-        // 建立放縮小後的圖用的底圖
-        $resizeSource = imagecreatetruecolor($resize_w, $resize_h);
-        
-        // 縮放後貼到 resizeSource 上
-        imagecopyresampled($resizeSource,$source,0,0,0,0,
-                     $resize_w,$resize_h,
-                     $source_w,$source_h) or die("error!\n");  
-        
-        /* 速度快，但品質較差的縮圖
-        imagecopyresized($resizeSource,$source,0,0,0,0,
-                     $resize_w,$resize_h,
-                     $source_w,$source_h) or die("error!\n"); */                        
-        //透空宣告
-        $trans_colour = imagecolorallocatealpha($resizeSource, 255, 255, 255, 127);     
+function getRGB($image,$x,$y) {
+  $rgb=imagecolorat($image, $x, $y);
+  $a=null;
+  $a['r'] = ($rgb >> 16) & 0xFF;
+  $a['g'] = ($rgb >> 8) & 0xFF;
+  $a['b'] = $rgb & 0xFF;
+  return $a;
+} // end function getRGB
+
+function RGB_sum($array) {
+  return $array['r']+$array['g']+$array['b'];
+} // end function RGB_sum
+
+function resize($source,$resize_w,$resize_h) {
+  // 原始的 width, height
+  $source_w = imagesx($source);
+  $source_h = imagesy($source);
+  // 建立放縮小後的圖用的底圖
+  $resizeSource = imagecreatetruecolor($resize_w, $resize_h);
+  // 縮放後貼到 resizeSource 上
+  imagecopyresampled($resizeSource,$source,0,0,0,0, $resize_w,$resize_h, $source_w,$source_h) or die("error!\n");  
+  
+  /* 速度快，但品質較差的縮圖
+  imagecopyresized($resizeSource,$source,0,0,0,0, $resize_w,$resize_h, $source_w,$source_h) or die("error!\n"); */
+  
+  //透空宣告
+  $trans_colour = imagecolorallocatealpha($resizeSource, 255, 255, 255, 127);     
                          
         for($x=0;$x<$resize_w;$x++)
         {
@@ -63,7 +57,7 @@ function getRGB($image,$x,$y)
         }
   
         return $resizeSource;
-    }
+    } // end function resize
    header('Content-type: image/png');
    $file_name=basename($_GET['file_name']);
    //$file_name='./google.jpg';
