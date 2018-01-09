@@ -1,4 +1,7 @@
 <?php 
+/**
+ * PHP 自動辨識去背
+ */
 
 function getRGB($image,$x,$y) {
   $rgb=imagecolorat($image, $x, $y);
@@ -80,12 +83,12 @@ function resize($source,$resize_w,$resize_h) {
      $new_s_width=$cur_width;
      $new_s_height=$cur_height;
    }
-   $new_s_width=(int)($new_s_width);
-   $new_s_height=(int)($new_s_height);  
-   $dst=resize($im,$new_s_width,$new_s_height); 
-   imagealphablending($dst, false);
-   imagesavealpha($dst, true);   
-   imagepng($dst);
-   imagedestroy($im);
-   imagedestroy($dst);
+$new_s_width=(int)($new_s_width);
+$new_s_height=(int)($new_s_height);  
+$dst=resize($im,$new_s_width,$new_s_height); 
+imagealphablending($dst, false);
+imagesavealpha($dst, true);   
+imagepng($dst);
+imagedestroy($im);
+imagedestroy($dst);
 ?>
