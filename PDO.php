@@ -1,9 +1,10 @@
 <?php
-
+/*
 $gb_DBname="db";//資料庫名稱
 $gb_DBuser="user";//資料庫使用者名稱
 $gb_DBpass="passwd";//資料庫密碼
 $gb_DBHOSTname="localhost";//主機的名稱或是IP位址 
+*/
 
 class SQL_DB {
     
@@ -61,7 +62,7 @@ class SQL_DB {
  
 }
 // 用法
-
+/*
 $db = new SQL_DB( $gb_DBHOSTname,$gb_DBname,$gb_DBuser,$gb_DBpass);
  
 $sqlRec = $db->query("SELECT * from table Where a = :a AND b = :b", array(":a"=> '參數:a', ":b"=> '參數:b'));
@@ -69,6 +70,7 @@ $sqlRec = $db->query("SELECT * from table Where a = :a AND b = :b", array(":a"=>
 while ($rec = $db->fetch_record($sqlRec)) {
     echo $rec[‘a’];
 }
+*/
 
 
 ?>
