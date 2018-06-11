@@ -10,3 +10,27 @@ function caculate( $num ) {
 caculate($str);
 exit();
 
+/* 2. 給你一個純正整數陣列取出第二大的數字，不能用內建 sort */
+
+$nums = Array(1,3,2,10,9);
+
+function dabaorank( $nums , $order = 'ASC' ){
+	$sortArray = array();
+	foreach ( $nums as $key => $num ) {
+		$rank = ( $order === 'DESC' ) ? 0 : count($nums)-1 ;
+		for ( $i=0; $i < count( $nums ) ; $i++ ) { 
+			if( $nums[$i] > $num && $order === 'DESC')
+				$rank++;
+			else if( $nums[$i] > $num && $order === 'ASC')
+				$rank--;
+		}
+		$sortArray[$rank] = $num;
+	}
+	return $sortArray;
+}
+
+$nums = dabaorank( $nums , 'DESC' ) ;
+
+echo "Sencond max : {$nums[1]}";
+
+exit;
