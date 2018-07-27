@@ -16,7 +16,7 @@ $nums = Array(1,3,2,10,9);
 
 function dabaorank( $nums , $order = 'ASC' ){
 	$sortArray = array();
-	foreach ( $nums as $key => $num ) {
+	foreach ( $nums as $num ) {
 		$rank = ( $order === 'DESC' ) ? 0 : count($nums)-1 ;
 		for ( $i=0; $i < count( $nums ) ; $i++ ) { 
 			if( $nums[$i] > $num && $order === 'DESC')
