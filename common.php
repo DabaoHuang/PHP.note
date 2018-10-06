@@ -31,6 +31,13 @@ class Ccommon
             file_put_contents($cachepath,serialize(base64_encode($content)));
         }  
         return $content;
-    }
+    } // end function getCache
+
+    function xml2array( $xmlObject, $out = array() )
+    {
+        foreach( (array) $xmlObject as $index => $node )
+                $out[$index] = ( is_object ( $node ) ) ? xml2array ( $node ) : $node ;
+    return $out;
+    } // end function xml2array
 }
 
